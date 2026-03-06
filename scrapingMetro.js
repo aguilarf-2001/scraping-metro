@@ -10,17 +10,29 @@ const db = admin.firestore();
 
 async function scrape() {
   try {
-    console.log("Probando escritura directa...");
+    console.log("Actualizando estado metro...");
 
-    await db.collection("estadoServicio").doc("metro").set({
-      estado: "Prueba Automática",
-      actualizado: new Date(),
+    await db.collection("estado_servicio").doc("metro").update({
+      Linea_1: "Operando",
+      Linea_2: "Operando",
+      Linea_3: "Operando",
+      Linea_4: "Operando",
+      Linea_5: "Operando",
+      Linea_6: "Operando",
+      Linea_7: "Operando",
+      Linea_8: "Operando",
+      Linea_9: "Operando",
+      Linea_A: "Operando",
+      Linea_B: "Operando",
+      Linea_12: "Operando",
+      Ultima_actualizacion: new Date()
     });
 
-    console.log("Actualizado correctamente");
+    console.log("Estado actualizado correctamente");
+
   } catch (error) {
     console.error("Error:", error);
-    throw error; // importante para que falle el workflow si hay error
+    throw error;
   }
 }
 

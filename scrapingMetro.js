@@ -1,3 +1,4 @@
+const axios = require("axios");
 const admin = require("firebase-admin");
 
 const serviceAccount = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT);
@@ -10,29 +11,38 @@ const db = admin.firestore();
 
 async function scrape() {
   try {
-    console.log("Actualizando estado metro...");
+    console.log("Iniciando scraping Metro...");
 
-    await db.collection("estado_servicio").doc("metro").update({
-      Linea_1: "Operando",
-      Linea_2: "Operando",
-      Linea_3: "Operando",
-      Linea_4: "Operando",
-      Linea_5: "Operando",
-      Linea_6: "Operando",
-      Linea_7: "Operando",
-      Linea_8: "Operando",
-      Linea_9: "Operando",
-      Linea_A: "Operando",
-      Linea_B: "Operando",
-      Linea_12: "Operando",
-      Ultima_actualizacion: new Date()
+    const url = "https://www.metro.cdmx.gob.mx/estado-del-servicio";
+
+    const response = await axios.get(url, {
+      timeout: 15000,
+      headers: {
+        "User-Agent": "Mozilla/5.0",
+        "Accept-Language": "es-MX,es;q=0.9",
+      },
     });
 
-    console.log("Estado actualizado correctamente");
+    const html = response.data;
+
+    if (!html || html.length < 100) {
+      throw new Error("HTML vacío o incompleto");
+    }
+
+    console.log("Scraping exitoso");
+
+    await db.collection("estado_servicio").doc("metro").set(
+      {
+        Ultima_actualizacion: admin.firestore.FieldValue.serverTimestamp(),
+      },
+      { merge: true }
+    );
+
+    console.log("Firestore actualizado correctamente");
 
   } catch (error) {
-    console.error("Error:", error);
-    throw error;
+    console.error("Error scraping:", error.message);
+    process.exit(1);
   }
 }
 

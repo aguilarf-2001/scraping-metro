@@ -1,7 +1,6 @@
-const axios = require("axios");
 const admin = require("firebase-admin");
 
-const serviceAccount = JSON.parse(process.env.FIREBASE_KEY);
+const serviceAccount = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT);
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
@@ -9,38 +8,20 @@ admin.initializeApp({
 
 const db = admin.firestore();
 
-async function scrapingMetro() {
+async function scrape() {
   try {
-    const url = "https://www.metro.cdmx.gob.mx/estado-del-servicio";
+    console.log("Probando escritura directa...");
 
-    const response = await axios.get(url, {
-      timeout: 15000,
-      headers: {
-        "User-Agent": "Mozilla/5.0",
-        "Accept-Language": "es-MX,es;q=0.9",
-      },
+    await db.collection("estado_servicio").doc("metro").set({
+      estado: "Prueba Automática",
+      actualizado: new Date(),
     });
 
-    const html = response.data;
-
-    if (!html || html.length < 100) {
-      throw new Error("HTML vacío o incompleto");
-    }
-
-    console.log("Scraping exitoso");
-
-    await db.collection("estado_servicio").doc("metro").set(
-      {
-        Ultima_actualizacion: admin.firestore.FieldValue.serverTimestamp(),
-      },
-      { merge: true }
-    );
-
-    console.log("Firestore actualizado correctamente");
+    console.log("Actualizado correctamente");
   } catch (error) {
-    console.error("Error scraping:", error.message);
-    process.exit(1);
+    console.error("Error:", error);
+    throw error; // importante para que falle el workflow si hay error
   }
 }
 
-scrapingMetro();
+scrape();

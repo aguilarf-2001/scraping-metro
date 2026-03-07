@@ -7,7 +7,7 @@ async function actualizarCorredores() {
     await db.collection("estado_servicio")
       .doc("corredores")
       .set({
-        Estado: "Operando",
+        Estado: "Operando con Normalidad",
         Ultima_actualizacion: admin.firestore.FieldValue.serverTimestamp()
       }, { merge: true });
 

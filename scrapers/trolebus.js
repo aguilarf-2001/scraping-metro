@@ -5,19 +5,19 @@ async function actualizarTrolebus() {
   try {
 
     const estados = {
-      Linea_1: "Operando",
-      Linea_2: "Operando",
-      Linea_3: "Operando",
-      Linea_4: "Operando",
-      Linea_5: "Operando",
-      Linea_6: "Operando",
-      Linea_7: "Operando",
-      Linea_8: "Operando",
-      Linea_9: "Operando",
-      Linea_10: "Operando",
-      Linea_11: "Operando",
-      Linea_12: "Operando",
-      Linea_13: "Operando"
+      Linea_1: "Operando con Normalidad",
+      Linea_2: "Operando con Normalidad",
+      Linea_3: "Operando con Normalidad",
+      Linea_4: "Operando con Normalidad",
+      Linea_5: "Operando con Normalidad",
+      Linea_6: "Operando con Normalidad",
+      Linea_7: "Operando con Normalidad",
+      Linea_8: "Operando con Normalidad",
+      Linea_9: "Operando con Normalidad",
+      Linea_10: "Operando con Normalidad",
+      Linea_11: "Operando con Normalidad",
+      Linea_12: "Operando con Normalidad",
+      Linea_13: "Operando con Normalidad"
     };
 
     await db.collection("estado_servicio")

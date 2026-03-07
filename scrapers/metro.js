@@ -5,18 +5,18 @@ async function actualizarMetro() {
   try {
 
     const estados = {
-      Linea_1: "Operando",
-      Linea_2: "Operando",
-      Linea_3: "Operando",
-      Linea_4: "Operando",
-      Linea_5: "Operando",
-      Linea_6: "Operando",
-      Linea_7: "Operando",
-      Linea_8: "Operando",
-      Linea_9: "Operando",
-      Linea_A: "Operando",
-      Linea_B: "Operando",
-      Linea_12: "Operando"
+      Linea_1: "Operando con Normalidad",
+      Linea_2: "Operando con Normalidad",
+      Linea_3: "Operando con Normalidad",
+      Linea_4: "Operando con Normalidad",
+      Linea_5: "Operando con Normalidad",
+      Linea_6: "Operando con Normalidad",
+      Linea_7: "Operando con Normalidad",
+      Linea_8: "Operando con Normalidad",
+      Linea_9: "Operando con Normalidad",
+      Linea_A: "Operando con Normalidad",
+      Linea_B: "Operando con Normalidad",
+      Linea_12: "Operando con Normalidad"
     };
 
     await db.collection("estado_servicio")

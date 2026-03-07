@@ -7,7 +7,7 @@ async function actualizarRTP() {
     await db.collection("estado_servicio")
       .doc("rtp")
       .set({
-        Estado: "Operando",
+        Estado: "Operando con Normalidad",
         Ultima_actualizacion: admin.firestore.FieldValue.serverTimestamp()
       }, { merge: true });
 

@@ -5,7 +5,7 @@ async function actualizarTrenLigero() {
   try {
 
     const estados = {
-      Linea_1: "Operando"
+      Linea_1: "Operando con Normalidad"
     };
 
     await db.collection("estado_servicio")

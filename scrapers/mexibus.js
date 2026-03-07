@@ -5,13 +5,13 @@ async function actualizarMexibus() {
   try {
 
     const estados = {
-      Linea_1: "Operando",
-      Linea_1A: "Operando",
-      Linea_2: "Operando",
-      Linea_2A: "Operando",
-      Linea_3: "Operando",
-      Linea_3A: "Operando",
-      Linea_4: "Operando"
+      Linea_1: "Operando con Normalidad",
+      Linea_1A: "Operando con Normalidad",
+      Linea_2: "Operando con Normalidad",
+      Linea_2A: "Operando con Normalidad",
+      Linea_3: "Operando con Normalidad",
+      Linea_3A: "Operando con Normalidad",
+      Linea_4: "Operando con Normalidad"
     };
 
     await db.collection("estado_servicio")

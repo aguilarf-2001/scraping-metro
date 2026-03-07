@@ -5,8 +5,8 @@ async function actualizarMexicable() {
   try {
 
     const estados = {
-      Linea_1: "Operando",
-      Linea_2: "Operando"
+      Linea_1: "Operando con Normalidad",
+      Linea_2: "Operando con Normalidad"
     };
 
     await db.collection("estado_servicio")

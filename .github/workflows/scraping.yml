@@ -10,17 +10,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-<<<<<<< HEAD
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Setup Node
-=======
       - name: Checkout repository
         uses: actions/checkout@v4
 
       - name: Setup Node.js
->>>>>>> recuperar-scraper
         uses: actions/setup-node@v4
         with:
           node-version: 20
@@ -28,12 +21,7 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-<<<<<<< HEAD
-      - name: Run scraper
-        run: node scrapingMetro.js
-=======
       - name: Run scrapers
         run: node index.js
->>>>>>> recuperar-scraper
         env:
           FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}

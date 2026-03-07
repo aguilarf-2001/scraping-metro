@@ -1,9 +1,15 @@
 {
-  "name": "scraping-metro",
+  "name": "cdmx-transit-scraper",
   "version": "1.0.0",
+<<<<<<< HEAD
   "main": "scrapingMetro.js",
   "scripts": {
     "start": "node scrapingMetro.js"
+=======
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+>>>>>>> recuperar-scraper
   },
   "dependencies": {
     "axios": "^1.6.0",

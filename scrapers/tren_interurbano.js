@@ -1,7 +1,7 @@
 const db = require("../firebase");
 const admin = require("firebase-admin");
 
-async function actualizarTrenSuburbano() {
+async function actualizarTrenInterurbano() {
   try {
 
     const estados = {
@@ -9,17 +9,17 @@ async function actualizarTrenSuburbano() {
     };
 
     await db.collection("estado_servicio")
-      .doc("tren_suburbano")
+      .doc("tren_interurbano")
       .set({
         ...estados,
         Ultima_actualizacion: admin.firestore.FieldValue.serverTimestamp()
       }, { merge: true });
 
-    console.log("Tren Suburbano actualizado");
+    console.log("Tren Interurbano actualizado");
 
   } catch (error) {
-    console.error("Error actualizando Tren Suburbano:", error);
+    console.error("Error actualizando Tren Interurbano:", error);
   }
 }
 
-module.exports = actualizarTrenSuburbano;
+module.exports = actualizarTrenInterurbano;

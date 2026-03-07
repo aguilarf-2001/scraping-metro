@@ -1,4 +1,5 @@
 const db = require("../firebase");
+const admin = require("firebase-admin");
 
 async function actualizarMetrobus() {
 
@@ -16,7 +17,7 @@ async function actualizarMetrobus() {
     .doc("metrobus")
     .set({
       ...estados,
-      Ultima_actualizacion: new Date()
+      Ultima_actualizacion: admin.firestore.FieldValue.serverTimestamp()
     }, { merge: true });
 
   console.log("Metrobús actualizado");

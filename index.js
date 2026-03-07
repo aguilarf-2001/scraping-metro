@@ -1,14 +1,21 @@
-const actualizarMetro = require("./scrapers/metro");
-const actualizarMetrobus = require("./scrapers/metrobus");
+const scrapeMetro = require("./scrapers/metro");
+const scrapeMetrobus = require("./scrapers/metrobus");
 
-async function ejecutarScrapers() {
+async function runScrapers() {
+  try {
+    console.log("Iniciando scrapers...");
 
-  console.log("Iniciando scrapers...");
+    await Promise.all([
+      scrapeMetro(),
+      scrapeMetrobus()
+    ]);
 
-  await actualizarMetro();
-  await actualizarMetrobus();
+    console.log("Scrapers completados");
 
-  console.log("Scraping terminado");
+  } catch (error) {
+    console.error("Error ejecutando scrapers:", error);
+    process.exit(1);
+  }
 }
 
-ejecutarScrapers();
+runScrapers();
